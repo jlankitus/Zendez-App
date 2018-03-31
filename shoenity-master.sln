@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shoenity-master", "shoenity-master.csproj", "{AB5CE46F-77A2-4971-A410-0E509634F598}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shoenity-master.Plugins", "shoenity-master.Plugins.csproj", "{F86E2D21-319B-579A-46E1-34886F4A89D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB5CE46F-77A2-4971-A410-0E509634F598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB5CE46F-77A2-4971-A410-0E509634F598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB5CE46F-77A2-4971-A410-0E509634F598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB5CE46F-77A2-4971-A410-0E509634F598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F86E2D21-319B-579A-46E1-34886F4A89D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F86E2D21-319B-579A-46E1-34886F4A89D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F86E2D21-319B-579A-46E1-34886F4A89D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F86E2D21-319B-579A-46E1-34886F4A89D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
