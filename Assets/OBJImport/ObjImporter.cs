@@ -14,15 +14,12 @@ using System.Text;
 
 public class ObjImporter : MonoBehaviour
 {
-
+   
     string modelPath = "New_Model";
 
     public delegate void ObjectImportedEventHandler(GameObject gameObject);
     public event ObjectImportedEventHandler ObjectImported;
     public Material mat;
-
-    string zip_path;
-    string write_path;
 
     private struct meshStruct
     {
@@ -40,28 +37,15 @@ public class ObjImporter : MonoBehaviour
         public Vector3[] faceData;
         public string name;
         public string fileName;
-
-        
     }
 
     public void Start()
     {
-        /*
-        zip_path = Application.streamingAssetsPath + '/' + "download.obj.zip";
-        write_path = Application.streamingAssetsPath + '/' + "download.obj";
-        ZipUtil.Unzip(zip_path, write_path);
-        print(write_path);
-        string[] dirs = Directory.GetDirectories(write_path);
-        string[] objFiles = Directory.GetFiles(dirs[0]);
-        foreach(string file in objFiles)
-        {
-            if (file.Contains(".obj") && !file.Contains("meta"))
-                Import(file);
-        }
-        */
+        Import("C:\\Users\\Branden\\Documents\\Point Cloud Surface Reconstruction\\Assets\\Unity-PointCloud\\Texture Stuff\\Test Data\\shoe\\shoe.obj",
+               "C:\\Users\\Branden\\Documents\\Point Cloud Surface Reconstruction\\Assets\\Unity-PointCloud\\Texture Stuff\\Test Data\\shoe\\shoe_texture.jpg");
     }
 
-    public void Import(string mPath)
+    public void Import(string mPath, string textPath)
     {
         modelPath = mPath;
         // Create mesh
@@ -79,7 +63,9 @@ public class ObjImporter : MonoBehaviour
         // Add mesh renderer
         MeshRenderer meshRenderer = emptyGameObject.AddComponent(typeof(MeshRenderer)) as MeshRenderer;
         meshRenderer.material = mat;
-
+        Texture2D tex = new Texture2D(2, 2);
+        tex.LoadImage(File.ReadAllBytes(textPath));
+        meshRenderer.material.SetTexture("_MainTex", tex);
         // Tell the boys
         if (ObjectImported != null)
         {
@@ -118,7 +104,7 @@ public class ObjImporter : MonoBehaviour
         mesh.normals = newNormals;
 
         int max = 0;
-        foreach (int index in newMesh.triangles)
+        foreach(int index in newMesh.triangles)
         {
             if (index > max)
             {
@@ -133,7 +119,7 @@ public class ObjImporter : MonoBehaviour
         mesh.triangles = newMesh.triangles;
 
         mesh.RecalculateBounds();
-        // mesh.Optimize();
+        ;
 
         return mesh;
     }
@@ -152,7 +138,7 @@ public class ObjImporter : MonoBehaviour
         stream.Close();
         using (StringReader reader = new StringReader(entireText))
         {
-
+            
             string currentText = reader.ReadLine();
             char[] splitIdentifier = { ' ' };
             string[] brokenString;
@@ -305,13 +291,13 @@ public class ObjImporter : MonoBehaviour
                             }
                             j = 1;
                             // Now assuming all faces are triangles so this loop doesnt really do any thing and if we dont have a triangle im not sure if this will work
-                            while (j + 2 < brokenString.Length)
+                            while (j + 2 < brokenString.Length) 
                             {
                                 brokenBrokenString = brokenString[1].Split(splitIdentifier2, 3);
                                 mesh.triangles[f] = System.Convert.ToInt32(brokenBrokenString[1]) - 1;
                                 f++;
                                 brokenBrokenString = brokenString[2].Split(splitIdentifier2, 3);
-                                mesh.triangles[f] = System.Convert.ToInt32(brokenBrokenString[1]) - 1;
+                                mesh.triangles[f] = System.Convert.ToInt32(brokenBrokenString[1]) - 1; 
                                 f++;
                                 brokenBrokenString = brokenString[3].Split(splitIdentifier2, 3);
                                 mesh.triangles[f] = System.Convert.ToInt32(brokenBrokenString[1]) - 1;

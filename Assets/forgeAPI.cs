@@ -356,7 +356,7 @@ iJIUzI1NiIsImtpZCI6Imp3dF9zeW1tZXRyaWNfa2V5In0.eyJjbGllbnRfaWQiOiJ5WjgxMllmaTZ3R
                 if (splitFile[splitFile.Length - 1].Contains(".obj"))
                 {
                     print("importing: " + file);
-                    importer.Import(file);
+                    importer.Import(file,  "");
                 }
             }
         }
