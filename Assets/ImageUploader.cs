@@ -6,7 +6,7 @@ using System;
 using UnityEngine.UI;
 
 public class ImageUploader : MonoBehaviour {
-
+    public AudioSource audioSource;
 	public WebCamTexture webCamTexture;
     public Text debug;
 	int count = 0;
@@ -17,7 +17,8 @@ public class ImageUploader : MonoBehaviour {
 		webCamTexture = new WebCamTexture();
 		GetComponent<Renderer>().material.mainTexture = webCamTexture;
 		webCamTexture.Play();
-	}
+        audioSource = this.GetComponent<AudioSource>();
+    }
 
 	void Update() {
 		if (Input.GetMouseButtonDown (0))
@@ -29,7 +30,10 @@ public class ImageUploader : MonoBehaviour {
 
 	IEnumerator TakePhoto()
 	{
-
+        if(audioSource != null)
+        {
+            audioSource.Play();
+        }
 		// NOTE - you almost certainly have to do this here:
 
 		yield return new WaitForEndOfFrame();

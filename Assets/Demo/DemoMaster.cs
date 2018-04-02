@@ -72,4 +72,10 @@ public class DemoMaster : MonoBehaviour {
         SceneManager.LoadScene(scene.name);
     }
 
+    public void FlipShoe()
+    {
+        Vector3 scale = shoeObject.transform.localScale;
+        shoeObject.transform.localScale = new Vector3(scale.x * -1, scale.y, scale.z);
+    }
+
 }

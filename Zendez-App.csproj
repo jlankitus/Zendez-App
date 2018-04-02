@@ -306,17 +306,17 @@
     <Compile Include="Assets\Demo\DemoMaster.cs" />
     <Compile Include="Assets\Demo\ProjectTexture.cs" />
     <Compile Include="Assets\Demo\Rotation.cs" />
+    <Compile Include="Assets\Demo\ScanButton.cs" />
     <Compile Include="Assets\Demo\ShoeControls.cs" />
+    <Compile Include="Assets\Demo\UpdateModel.cs" />
     <Compile Include="Assets\Demo\UpdateTexture.cs" />
     <Compile Include="Assets\DownloadObj.cs" />
     <Compile Include="Assets\forgeAPI.cs" />
     <Compile Include="Assets\ImageUploader.cs" />
     <Compile Include="Assets\OBJImport\ObjImporter.cs" />
     <Compile Include="Assets\postImage.cs" />
-    <Compile Include="Assets\ScanButton.cs" />
     <Compile Include="Assets\testJSON.cs" />
     <Compile Include="Assets\unzip.cs" />
-    <Compile Include="Assets\UpdateModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
