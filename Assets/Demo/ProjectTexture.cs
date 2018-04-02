@@ -54,6 +54,12 @@ public class ProjectTexture : MonoBehaviour
 
     public void ProjectOnToTexture()
     {
+        text = spriteRenderer.sprite.texture;
+        if (whiteTransparent)
+        {
+            WhiteTrans();
+        }
+        FillVertToText();
         pixelsPerUnit = spriteRenderer.sprite.pixelsPerUnit;
         // Loop through verts of mesh
         Mesh mesh = shoeObject.GetComponent<MeshFilter>().mesh;
@@ -143,12 +149,6 @@ public class ProjectTexture : MonoBehaviour
     void Start()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
-        text = spriteRenderer.sprite.texture;
-        if(whiteTransparent)
-        {
-            WhiteTrans();
-        }
-        FillVertToText();
         //ProjectOnToTexture();
     }
 }

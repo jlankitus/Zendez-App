@@ -45,7 +45,7 @@ public class ObjImporter : MonoBehaviour
                "C:\\Users\\Branden\\Documents\\Point Cloud Surface Reconstruction\\Assets\\Unity-PointCloud\\Texture Stuff\\Test Data\\shoe\\shoe_texture.jpg");
     }
 
-    public void Import(string mPath, string textPath)
+    public GameObject Import(string mPath, string textPath)
     {
         modelPath = mPath;
         // Create mesh
@@ -71,6 +71,7 @@ public class ObjImporter : MonoBehaviour
         {
             ObjectImported(emptyGameObject);
         }
+        return emptyGameObject;
     }
 
     // Use this for initialization
