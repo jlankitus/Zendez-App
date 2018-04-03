@@ -304,6 +304,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Demo\DemoMaster.cs" />
+    <Compile Include="Assets\Demo\GetGalleryImages.cs" />
     <Compile Include="Assets\Demo\ProjectTexture.cs" />
     <Compile Include="Assets\Demo\Rotation.cs" />
     <Compile Include="Assets\Demo\ScanButton.cs" />
@@ -317,6 +318,9 @@
     <Compile Include="Assets\postImage.cs" />
     <Compile Include="Assets\testJSON.cs" />
     <Compile Include="Assets\unzip.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

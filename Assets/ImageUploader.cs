@@ -20,12 +20,14 @@ public class ImageUploader : MonoBehaviour {
         audioSource = this.GetComponent<AudioSource>();
     }
 
+    public void Photo()
+    {
+        count++;
+        StartCoroutine(TakePhoto());
+    }
+
 	void Update() {
-		if (Input.GetMouseButtonDown (0))
-		{
-			count++;
-			StartCoroutine (TakePhoto ());
-		}
+
 	}
 
 	IEnumerator TakePhoto()

@@ -79,7 +79,7 @@ c63db43c730fa2cbb8ca07de15898cb6 UnityEngine.UI.dll:UnityEngine.UI.Toggle
 f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-469c49e07d140cb3a520d332f26b6c0e Assembly-CSharp.dll:.UpdateModel
+3c125bfb422f49701cbeecd8a55474d1 Assembly-CSharp.dll:.UpdateModel
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -92,7 +92,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 9ca6347af5ceb6b0d1c105af31b6722e UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-77f623e35884ed6a18f0961571a45653 Assembly-CSharp.dll:.forgeAPI
+342a69821976ed61bfe15afbc6904972 Assembly-CSharp.dll:.forgeAPI
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -150,8 +150,9 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 7b4ebd56ee492782236a37d60685d51b Assembly-CSharp.dll:.ProjectTexture
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-87e2104fe8f166a634fbdce21c74117a Assembly-CSharp.dll:.DemoMaster
-064952cdcd87eac4b0d4ced02d9e2427 Assembly-CSharp.dll:.ShoeControls
+8d3c944d9cfcb3741e473bcdb9a93f79 Assembly-CSharp.dll:.DemoMaster
+bbec085b978f7f52c40045b1d809e490 Assembly-CSharp.dll:.ShoeControls
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.unzip
 92d480dfc1301367f5bb1dacd6804ba5 Assembly-CSharp.dll:.UpdateTexture
 891194d1711f059074dfe988cb422d33 Assembly-CSharp.dll:.Rotation
+82d31824c65981e78f9431399c5537bf Assembly-CSharp.dll:.GetGalleryImages

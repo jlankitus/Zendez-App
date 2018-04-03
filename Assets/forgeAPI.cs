@@ -8,6 +8,8 @@ using System;
 using System.IO;
 using System.IO.Compression;
 
+
+
 public class accessToken
 {
 	public string access_token;
@@ -37,7 +39,7 @@ public class RootObj
 }
 
 public class forgeAPI : MonoBehaviour {
-
+    public string[] images;
 	public Text sceneText;
 	public Text debug;
 	private string sceneName;
@@ -136,7 +138,7 @@ iJIUzI1NiIsImtpZCI6Imp3dF9zeW1tZXRyaWNfa2V5In0.eyJjbGllbnRfaWQiOiJ5WjgxMllmaTZ3R
 			// photoSceneId = SceneID.CreateFromJSON(www.downloadHandler.text).photosceneid;
 			// print(photoSceneId);
 			photoSceneId = parsePhotoSceneID(www.downloadHandler.text);
-			StartCoroutine(PostPics());
+            StartCoroutine(PostPics());
         } 
 	}
 
@@ -169,15 +171,19 @@ iJIUzI1NiIsImtpZCI6Imp3dF9zeW1tZXRyaWNfa2V5In0.eyJjbGllbnRfaWQiOiJ5WjgxMllmaTZ3R
 		form.AddField("type", "image");
         // string urlEncoded = WWW.EscapeURL("@/home/jed/Pictures/brandonShoe/1.jpg");
         // string [] fileEntries = Directory.GetFiles("Assets/StreamingAssets/");
-        string[] fileEntries = null;
+        string[] files = null;
+
         if(device == "android")
         {
-            fileEntries = Directory.GetFiles(Application.persistentDataPath + "/");
+            files = Directory.GetFiles(Application.persistentDataPath + "/");
         }
         else if(device == "pc")
         {
-            fileEntries = Directory.GetFiles("Assets/StreamingAssets/");
+            files = Directory.GetFiles("Assets/StreamingAssets/");
         }
+        string[] fileEntries = new string[images.Length + files.Length];
+        images.CopyTo(fileEntries, 0);
+        files.CopyTo(fileEntries, images.Length);
         int count = 1;
 
 		foreach(string file in fileEntries)
@@ -346,19 +352,27 @@ iJIUzI1NiIsImtpZCI6Imp3dF9zeW1tZXRyaWNfa2V5In0.eyJjbGllbnRfaWQiOiJ5WjgxMllmaTZ3R
 
             System.IO.File.WriteAllBytes(zip_path, www.bytes);
             ZipUtil.Unzip(zip_path, write_path);
-            
-            // debug.text = "downloaded and saved";
 
+            // debug.text = "downloaded and saved";
+            sceneText.text = debug.text;
             string[] objFiles = Directory.GetFiles(write_path);
+            string objFile = "";
+            string textFile = "";
             foreach (string file in objFiles)
             {
                 string[] splitFile = file.Split('/');
                 if (splitFile[splitFile.Length - 1].Contains(".obj"))
                 {
-                    print("importing: " + file);
-                    importer.Import(file,  "");
+                    objFile = file;
+                }
+                if (splitFile[splitFile.Length - 1].Contains(".jpg"))
+                {
+                    textFile = file;
                 }
             }
+            print("importing: " + objFile);
+            importer.Import(objFile, textFile);
+
         }
 
         try

@@ -41,8 +41,8 @@ public class ObjImporter : MonoBehaviour
 
     public void Start()
     {
-        Import("C:\\Users\\Branden\\Documents\\Point Cloud Surface Reconstruction\\Assets\\Unity-PointCloud\\Texture Stuff\\Test Data\\shoe\\shoe.obj",
-               "C:\\Users\\Branden\\Documents\\Point Cloud Surface Reconstruction\\Assets\\Unity-PointCloud\\Texture Stuff\\Test Data\\shoe\\shoe_texture.jpg");
+        //Import("C:\\Users\\Branden\\Documents\\Point Cloud Surface Reconstruction\\Assets\\Unity-PointCloud\\Texture Stuff\\Test Data\\shoe\\shoe.obj",
+        //       "C:\\Users\\Branden\\Documents\\Point Cloud Surface Reconstruction\\Assets\\Unity-PointCloud\\Texture Stuff\\Test Data\\shoe\\shoe_texture.jpg");
     }
 
     public GameObject Import(string mPath, string textPath)

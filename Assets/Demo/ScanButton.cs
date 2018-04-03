@@ -11,7 +11,7 @@ public class ScanButton : MonoBehaviour {
 	
     public void Scan()
     {
-        SceneManager.LoadScene("dunkin");
+        DemoMaster.instance.StartModelScan();
     }
     // Update is called once per frame
     void Update () {

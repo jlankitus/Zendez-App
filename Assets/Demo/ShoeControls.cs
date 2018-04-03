@@ -11,24 +11,49 @@ public class ShoeControls : MonoBehaviour {
     public Text text;
     int mode = 0;
     bool modeSet = false;
+    public Slider xSlider;
+    public Slider ySlider;
+    public Slider zSlider;
     // Use this for initialization
+
+    void UpdateRotationX(float val)
+    {
+        this.transform.localEulerAngles = new Vector3(val, this.transform.localEulerAngles.y, this.transform.localEulerAngles.z);
+    }
+    void UpdateRotationY(float val)
+    {
+        this.transform.localEulerAngles = new Vector3(this.transform.localEulerAngles.x, val, this.transform.localEulerAngles.z);
+    }
+    void UpdateRotationZ(float val)
+    {
+        this.transform.localEulerAngles = new Vector3(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, val);
+    }
     void Start()
     {
+        xSlider.value = transform.localEulerAngles.x;
+        xSlider.onValueChanged.AddListener(UpdateRotationX);
+
+        ySlider.value = transform.localEulerAngles.y;
+        ySlider.onValueChanged.AddListener(UpdateRotationY);
+
+        zSlider.value = transform.localEulerAngles.z;
+        zSlider.onValueChanged.AddListener(UpdateRotationZ);
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         if (mode == 0 && Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-            transform.Translate(-touchDeltaPosition.x * moveSpeed * Time.deltaTime, touchDeltaPosition.y * moveSpeed * Time.deltaTime, 0);
+            shoeSprite.transform.Translate(touchDeltaPosition.x * moveSpeed * Time.deltaTime, touchDeltaPosition.y * moveSpeed * Time.deltaTime, 0);
             modeSet = false;
         }
         else if (mode == 1 && Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-            transform.Rotate(-touchDeltaPosition.x * rotateSpeed * Time.deltaTime, touchDeltaPosition.y * rotateSpeed * Time.deltaTime, 0);
+            shoeSprite.transform.Rotate(-touchDeltaPosition.x * rotateSpeed * Time.deltaTime, touchDeltaPosition.y * rotateSpeed * Time.deltaTime, 0);
             modeSet = false;
 
         }
@@ -56,18 +81,18 @@ public class ShoeControls : MonoBehaviour {
             // Find the difference in the distances between each frame.
             float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
             deltaMagnitudeDiff *= -1;
-            mainCamera.orthographicSize -= deltaMagnitudeDiff * zoomSpeed * 5 * Time.deltaTime;
+            //mainCamera.orthographicSize -= deltaMagnitudeDiff * zoomSpeed * 5 * Time.deltaTime;
             shoeSprite.transform.localScale = new Vector3(shoeSprite.transform.localScale.x + deltaMagnitudeDiff * zoomSpeed * Time.deltaTime, shoeSprite.transform.localScale.x + deltaMagnitudeDiff * zoomSpeed * Time.deltaTime, shoeSprite.transform.localScale.z);
             modeSet = false;
 
         }
         else if(Input.touchCount >= 5   && !modeSet)
         {
-            //text.text = mode.ToString();
-            mode = mode + 1;
-            if (mode >= 3)
-                mode = 0;
-            modeSet = true;
+            ////text.text = mode.ToString();
+            //mode = mode + 1;
+            //if (mode >= 3)
+            //    mode = 0;
+            //modeSet = true;
         }
     }
 

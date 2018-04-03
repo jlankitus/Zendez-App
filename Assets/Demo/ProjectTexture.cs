@@ -55,10 +55,12 @@ public class ProjectTexture : MonoBehaviour
     public void ProjectOnToTexture()
     {
         text = spriteRenderer.sprite.texture;
+
         if (whiteTransparent)
         {
             WhiteTrans();
         }
+        text = spriteRenderer.sprite.texture;
         FillVertToText();
         pixelsPerUnit = spriteRenderer.sprite.pixelsPerUnit;
         // Loop through verts of mesh

@@ -6,6 +6,9 @@ public class UpdateModel : MonoBehaviour {
 
     public Mesh mesh;
     public Texture2D texture;
+    public Vector3 transform;
+    public Vector3 rotation;
+    public Vector3 scale;
 	// Use this for initialization
 	void Start () {
 		
@@ -18,7 +21,7 @@ public class UpdateModel : MonoBehaviour {
     
     public void UpdateMod()
     {
-        DemoMaster.instance.SetObj(mesh, texture);
+        DemoMaster.instance.SetObj(mesh, texture, transform, rotation, scale);
         DemoMaster.instance.StartTexturingArea();
     }
 }
