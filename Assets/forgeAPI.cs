@@ -154,30 +154,30 @@ iJIUzI1NiIsImtpZCI6Imp3dF9zeW1tZXRyaWNfa2V5In0.eyJjbGllbnRfaWQiOiJ5WjgxMllmaTZ3R
 
 	}
 
-	IEnumerator PostPics()
-	{
-		/*
-		curl -v 'https://developer.api.autodesk.com/photo-to-3d/v1/file' -X 'POST' 
-		-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Imp3dF9zeW1tZXRyaWNfa2V5In0.eyJjbGllbnRfaWQiOiJ5WjgxMllmaTZ3REQxdUt1M09hTWdVN2FhMnhVSW5nVCIsImV4cCI6MTUxNzAwMDY5MSwic2NvcGUiOlsiZGF0YTpyZWFkIiwiZGF0YTp3cml0ZSJdLCJhdWQiOiJodHRwczovL2F1dG9kZXNrLmNvbS9hdWQvand0ZXhwNjAiLCJqdGkiOiJFdmhTZjdSc2FLNHEwUDlKc0hKcW5WeFhBWTFDcTB0NkdKSlNibFFYUnZlb1hWUmlFUFhKT08xQTFOSThYcXJtIn0.kGDxTfumgmH5AcX322_AljPWYDpqX97fI8VyvpbzSeA' 
-		-F "photosceneid=J4JsZovr9E2tRspPmf6ihe37CSZJm4nHxvZJhYStartCoroutine(newPhotoScene());mvmU4" 
-		-F "type=image" 
-		-F "file[0]=@/home/jed/Pictures/brandonShoe/1.jpg"
-		 */
+    IEnumerator PostPics()
+    {
+        /*
+                  curl -v 'https://developer.api.autodesk.com/photo-to-3d/v1/file' -X 'POST' 
+                  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6Imp3dF9zeW1tZXRyaWNfa2V5In0.eyJjbGllbnRfaWQiOiJ5WjgxMllmaTZ3REQxdUt1M09hTWdVN2FhMnhVSW5nVCIsImV4cCI6MTUxNzAwMDY5MSwic2NvcGUiOlsiZGF0YTpyZWFkIiwiZGF0YTp3cml0ZSJdLCJhdWQiOiJodHRwczovL2F1dG9kZXNrLmNvbS9hdWQvand0ZXhwNjAiLCJqdGkiOiJFdmhTZjdSc2FLNHEwUDlKc0hKcW5WeFhBWTFDcTB0NkdKSlNibFFYUnZlb1hWUmlFUFhKT08xQTFOSThYcXJtIn0.kGDxTfumgmH5AcX322_AljPWYDpqX97fI8VyvpbzSeA' 
+                  -F "photosceneid=J4JsZovr9E2tRspPmf6ihe37CSZJm4nHxvZJhYStartCoroutine(newPhotoScene());mvmU4" 
+                  -F "type=image" 
+                  -F "file[0]=@/home/jed/Pictures/brandonShoe/1.jpg"
+                   */
 
-		string url = "https://developer.api.autodesk.com/photo-to-3d/v1/file";
-		WWWForm form = new WWWForm();
+        string url = "https://developer.api.autodesk.com/photo-to-3d/v1/file";
+        WWWForm form = new WWWForm();
 
         form.AddField("photosceneid", photoSceneId);
-		form.AddField("type", "image");
+        form.AddField("type", "image");
         // string urlEncoded = WWW.EscapeURL("@/home/jed/Pictures/brandonShoe/1.jpg");
         // string [] fileEntries = Directory.GetFiles("Assets/StreamingAssets/");
         string[] files = null;
 
-        if(device == "android")
+        if (device == "android")
         {
             files = Directory.GetFiles(Application.persistentDataPath + "/");
         }
-        else if(device == "pc")
+        else if (device == "pc")
         {
             files = Directory.GetFiles("Assets/StreamingAssets/");
         }
@@ -185,32 +185,37 @@ iJIUzI1NiIsImtpZCI6Imp3dF9zeW1tZXRyaWNfa2V5In0.eyJjbGllbnRfaWQiOiJ5WjgxMllmaTZ3R
         images.CopyTo(fileEntries, 0);
         files.CopyTo(fileEntries, images.Length);
         int count = 1;
+        debug.text = "Posting " + fileEntries.Length + " pics";
+        Debug.Log("Posting " + fileEntries.Length + " pics");
 
-		foreach(string file in fileEntries)
-		{
+        foreach (string file in fileEntries)
+        {
             if (!file.Contains(".meta"))
-			{
-				byte[] bytes = System.IO.File.ReadAllBytes(file);
-				form.AddBinaryData("file[0]", bytes, count.ToString() + ".jpg");
+            {
+                byte[] bytes = System.IO.File.ReadAllBytes(file);
+                form.AddBinaryData("file[0]", bytes, count.ToString() + ".jpg");
 
-				UnityWebRequest www = UnityWebRequest.Post(url, form);
-				www.SetRequestHeader("Authorization","Bearer " + access_token);
-				yield return www.Send();
-		
-				if(www.isNetworkError) {
-					Debug.Log(www.error);
+                UnityWebRequest www = UnityWebRequest.Post(url, form);
+                www.SetRequestHeader("Authorization", "Bearer " + access_token);
+                yield return www.Send();
+
+                if (www.isNetworkError)
+                {
+                    Debug.Log(www.error);
                     debug.text = www.error;
-				}
-				else {
-					Debug.Log("photo upload complete!");
-					debug.text = www.downloadHandler.text;
-					print(www.downloadHandler.text);
-				} 
-				count++;
-			}		
-		}
-		StartCoroutine(Process());
-	}	
+                }
+                else
+                {
+                    Debug.Log("photo upload complete!");
+                    debug.text = www.downloadHandler.text;
+                    print(www.downloadHandler.text);
+                }
+                count++;
+            }
+        }
+        Debug.Log(count + " Number of photos");
+        StartCoroutine(Process());
+    }	
 
 	IEnumerator Process()
 	{
